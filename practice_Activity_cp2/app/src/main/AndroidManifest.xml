@@ -18,7 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FisrtActivity"></activity>
+        <activity android:name=".firstActivity"></activity>
+        <activity android:name=".secondActivity"
+            android:theme="@android:style/Theme.Dialog">
+
+        </activity>
     </application>
 
 </manifest>
