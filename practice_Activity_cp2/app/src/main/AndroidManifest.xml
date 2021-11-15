@@ -19,10 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".firstActivity"></activity>
-        <activity android:name=".secondActivity"
-            android:theme="@android:style/Theme.Dialog">
-
-        </activity>
+        <activity android:name=".secondActivity"></activity>
     </application>
 
 </manifest>

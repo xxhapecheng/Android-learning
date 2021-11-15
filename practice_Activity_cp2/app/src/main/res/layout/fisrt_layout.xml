@@ -11,7 +11,7 @@
         android:id="@+id/button3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="to secondActivity"
+        android:text="intent 返回数据"
         android:layout_marginTop="100dp"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintStart_toEndOf="parent"

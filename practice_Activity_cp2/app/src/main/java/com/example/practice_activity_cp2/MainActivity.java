@@ -1,6 +1,7 @@
 package com.example.practice_activity_cp2;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,7 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     public static final String TAG="MainActivity";
     @Override
@@ -26,13 +27,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent =new Intent(MainActivity.this, firstActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent,1);
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String data = "hello baidu";
                 Intent intent= new Intent(MainActivity.this, secondActivity.class);
+                intent.putExtra("extra_data",data);
                 startActivity(intent);
             }
         });
@@ -89,11 +92,25 @@ public class MainActivity extends AppCompatActivity {
             case R.id.remove_item:
                 Toast.makeText(this,"you click remove",Toast.LENGTH_LONG).show();
                 break;
+            case R.id.quit_item:
+                ActivityCollector.finnishALL();
+                break;
             default:
         }
         return true;
     }
 
-
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case 1:
+                if(resultCode == RESULT_OK){
+                    String returnedData = data.getStringExtra("data_return");
+                    Log.d(TAG,returnedData);
+                }
+                break;
+            default:
+        }
+    }
 }
