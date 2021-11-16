@@ -5,6 +5,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
+    <com.example.practice_ui_cp3.TitleLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <TextView
         android:id="@+id/text_view1"

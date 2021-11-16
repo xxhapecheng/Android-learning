@@ -1,5 +1,6 @@
 package com.example.practice_ui_cp3;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,10 +18,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Button button = (Button) findViewById(R.id.button1);
         EditText ed = (EditText) findViewById(R.id.edtext1);
         ProgressBar pb = (ProgressBar) findViewById(R.id.progressbar1);
 
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null){
+            actionBar.hide();
+        }
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
