@@ -62,9 +62,17 @@ public class NewsTitleFragment extends Fragment {
     class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder>{
         private List<News> mNewsList;
 
-        @NonNull
+        class ViewHolder extends RecyclerView.ViewHolder{
+            TextView newsTitleText;
+            public ViewHolder(View view){
+                super(view);
+                newsTitleText=(TextView) view.findViewById(R.id.news_title);
+            }
+        }
+
+
         @Override
-        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        public ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
             View view=LayoutInflater.from(parent.getContext()).inflate(R.layout.news_item,parent,false);
             final ViewHolder holder =new ViewHolder(view);
             view.setOnClickListener(new View.OnClickListener() {
@@ -85,25 +93,21 @@ public class NewsTitleFragment extends Fragment {
             return holder;
         }
 
-        @Override
-        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            News news=mNewsList.get(position);
-            holder.newsTitleText.setText(news.getTitle());
-        }
-
-        class ViewHolder extends RecyclerView.ViewHolder{
-            TextView newsTitleText;
-            public ViewHolder(View view){
-                super(view);
-                newsTitleText=(TextView) view.findViewById(R.id.news_title);
-            }
-        }
         public NewsAdapter(List<News> newsList){
             mNewsList=newsList;
         }
 
 
 
+
+
+
+
+        @Override
+        public void onBindViewHolder( ViewHolder holder, int position) {
+            News news=mNewsList.get(position);
+            holder.newsTitleText.setText(news.getTitle());
+        }
 
         @Override
         public int getItemCount() {
