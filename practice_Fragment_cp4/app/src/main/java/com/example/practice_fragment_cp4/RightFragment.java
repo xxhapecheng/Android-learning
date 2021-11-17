@@ -10,10 +10,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class RightFragment extends Fragment {
+    public static final String TAG = "rightFragment";
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.right_fragment,container,false);
         return view;
     }
+
 }

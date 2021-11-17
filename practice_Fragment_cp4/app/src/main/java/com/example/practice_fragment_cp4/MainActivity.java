@@ -19,16 +19,16 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                replaceFragment(new AnotherRightFragment());
+                //replaceFragment(new AnotherRightFragment());
             }
         });
     }
 
-    private void replaceFragment(Fragment fragment){
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.right_layout,fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
+//    private void replaceFragment(Fragment fragment){
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        FragmentTransaction transaction = fragmentManager.beginTransaction();
+//        transaction.replace(R.id.right_layout,fragment);
+//        transaction.addToBackStack(null);
+//        transaction.commit();
+//    }
 }
