@@ -13,5 +13,37 @@
             android:layout_height="wrap_content"
             android:text="Create database"
             android:textAllCaps="false"/>
+    <EditText
+            android:id="@+id/edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="type something here"/>
+
+    <Button
+            android:id="@+id/add_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add data"
+            android:textAllCaps="false"/>
+
+    <Button
+            android:id="@+id/delete_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="delete data"
+            android:textAllCaps="false"/>
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/update_data"
+            android:text="update data"
+            android:textAllCaps="false"/>
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/select_data"
+            android:text="query data"
+            android:textAllCaps="false"/>
 
 </LinearLayout>
