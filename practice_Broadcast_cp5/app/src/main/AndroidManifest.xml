@@ -1,27 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.practice_broadcast_cp5">
+        package="com.example.practice_broadcast_cp5">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.Practice_Broadcast_cp5">
-
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/Theme.Practice_Broadcast_cp5">
         <receiver
-            android:name=".BootCompleteReceiver"
-            android:enabled="true"
-            android:exported="true">
+                android:name=".MyReceiver"
+                android:enabled="true"
+                android:exported="true">
 
+            <intent-filter>
+                <action android:name="MY_Broadcast" />
+            </intent-filter>
         </receiver>
 
+
+        <!-- enabled代表是否启用该广播接收器   exported表示是否允许这个广播接收器接收本程序以外的广播 -->
+        <receiver
+                android:name=".BootCompleteReceiver"
+                android:enabled="true"
+                android:exported="true"></receiver>
+
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+                android:name=".MainActivity"
+                android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
