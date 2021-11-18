@@ -20,8 +20,8 @@
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/buttoncast"
-            android:text="send broadcast"
+            android:id="@+id/force_offline"
+            android:text="send force offline broadcast"
             android:textAllCaps="false" />
 
 </LinearLayout>

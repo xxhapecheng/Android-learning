@@ -5,11 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
 //    private IntentFilter intentFilter;
+//    private LocalRecevier localRecevier;
+//    private LocalBroadcastManager localBroadcastManager;
 //    private NetworkChangeReceiver networkChangeReceiver;
 
     @Override
@@ -20,15 +21,36 @@ public class MainActivity extends AppCompatActivity {
 //        intentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
 //        networkChangeReceiver = new NetworkChangeReceiver();
 //        registerReceiver(networkChangeReceiver, intentFilter);
-        Button button = (Button) findViewById(R.id.buttoncast);
+        Button button = (Button) findViewById(R.id.force_offline);
+//        localBroadcastManager = LocalBroadcastManager.getInstance(this);//获取实例
+
         button.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent("MY_Broadcast");
+                Intent intent = new Intent("Force_offline.test");
+//                localBroadcastManager.sendBroadcast(intent);
                 sendBroadcast(intent);
             }
         });
+//        intentFilter = new IntentFilter();
+//        intentFilter.addAction("fuck broadcast");
+//        localRecevier = new LocalRecevier();
+//        localBroadcastManager.registerReceiver(localRecevier, intentFilter);
     }
+
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        localBroadcastManager.unregisterReceiver(localRecevier);
+//    }
+//
+//    class LocalRecevier extends BroadcastReceiver {
+//
+//        @Override
+//        public void onReceive(Context context, Intent intent) {
+//            Toast.makeText(context, "receive broadcast", Toast.LENGTH_LONG).show();
+//        }
+//    }
 
 //    @Override
 //    protected void onDestroy() {

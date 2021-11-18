@@ -12,31 +12,33 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.Practice_Broadcast_cp5">
-        <receiver
-                android:name=".MyReceiver"
-                android:enabled="true"
-                android:exported="true">
-
-            <intent-filter>
-                <action android:name="MY_Broadcast" />
-            </intent-filter>
-        </receiver>
-
-
-        <!-- enabled代表是否启用该广播接收器   exported表示是否允许这个广播接收器接收本程序以外的广播 -->
-        <receiver
-                android:name=".BootCompleteReceiver"
-                android:enabled="true"
-                android:exported="true"></receiver>
-
         <activity
-                android:name=".MainActivity"
+                android:name=".LoginActivity"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <receiver
+                android:name=".MyReceiver"
+                android:enabled="true"
+                android:exported="true">
+            <intent-filter>
+                <action android:name="MY_Broadcast" />
+            </intent-filter>
+        </receiver> <!-- enabled代表是否启用该广播接收器   exported表示是否允许这个广播接收器接收本程序以外的广播 -->
+        <receiver
+                android:name=".BootCompleteReceiver"
+                android:enabled="true"
+                android:exported="true" />
+
+        <activity
+                android:name=".MainActivity"
+                android:exported="true">
+
         </activity>
     </application>
 
