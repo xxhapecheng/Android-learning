@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -33,31 +34,36 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button makeCall=(Button)findViewById(R.id.make_call);
+        //Button makeCall=(Button)findViewById(R.id.make_call);
+
 
         //查询联系人
         ListView contactView=(ListView) findViewById(R.id.contacts_view);
         adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,contactsList);
-        makeCall.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        contactView.setAdapter(adapter);
+        if(ContextCompat.checkSelfPermission(MainActivity.this, permission.READ_CONTACTS)!=PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(MainActivity.this,new String[]{permission.READ_CONTACTS},1);
+        }else{
+            readContacts();
+        }
+        Toast.makeText(this,"finish",Toast.LENGTH_LONG);
+
+//        makeCall.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
 //                if(ContextCompat.checkSelfPermission(MainActivity.this, permission.CALL_PHONE)!= PackageManager.PERMISSION_GRANTED){
 //                    ActivityCompat.requestPermissions(MainActivity.this,new String[]{permission.CALL_PHONE},1);
 //                }
 //                else{
 //                    call();
 //                }
-                if(ContextCompat.checkSelfPermission(MainActivity.this, permission.READ_CONTACTS)!=PackageManager.PERMISSION_GRANTED){
-                    ActivityCompat.requestPermissions(MainActivity.this,new String[]{permission.READ_CONTACTS},1);
-                }else{
-                    readContacts();
-                }
+//
+//
+//
+//            }
+//        });
 
 
-            }
-        });
-
-        Toast.makeText(this,"finish",Toast.LENGTH_LONG);
 
     }
 
@@ -70,8 +76,10 @@ public class MainActivity extends AppCompatActivity {
                     String displayname=cursor.getString((cursor.getColumnIndex(Phone.DISPLAY_NAME)));
                     @SuppressLint("Range") String number=cursor.getString(cursor.getColumnIndex(Phone.NUMBER));
                     contactsList.add(displayname+"\n"+number);
-                }
+                    Log.d("MainActivity",displayname+"\n"+number);
+                };
                 adapter.notifyDataSetChanged();
+                Log.d("MainActivity","done");
             }
         }catch (Exception e){
             e.printStackTrace();
