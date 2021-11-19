@@ -7,13 +7,27 @@
         android:orientation="vertical"
         tools:context=".MainActivity">
 
+        <Button
+                android:id="@+id/add_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="add to book"/>
 
-
-    <ListView
+    <Button
+            android:id="@+id/query_data"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/contacts_view"
-            />
+            android:layout_height="wrap_content"
+            android:text="query data"/>
+    <Button
+            android:id="@+id/delete_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="delete data"/>
+    <Button
+            android:id="@+id/update_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="update data"/>
 
 
 </LinearLayout>
