@@ -27,6 +27,8 @@ import java.util.List;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
@@ -86,16 +88,34 @@ public class MainActivity extends AppCompatActivity {
                     };
 
                     Request request = new Request.Builder()
-                        .url("http://10.64.122.72/get_data.xml")
+                        .url("http://10.64.122.72/get_data.json")
                         .build();
                     Response response = client.newCall(request).execute();
                     String responseData=response.body().string();
-                    parseXMLWithPull(responseData);
+                    parseJsonWithJsonObject(responseData);
                 }catch (Exception e){
                     e.printStackTrace();
                 }
             }
         }).start();
+    }
+
+    private void parseJsonWithJsonObject(String jsonData) {
+        try {
+            JSONArray jsonArray =new JSONArray(jsonData);
+            for(int i=0;i<jsonArray.length();i++){
+                JSONObject jsonObject=jsonArray.getJSONObject(i);
+                String id=jsonObject.getString("id");
+                String name =jsonObject.getString("name");
+                String version=jsonObject.getString("version");
+                Log.d("MainActivity","id is "+id);
+                Log.d("MainActivity","name is "+name);
+                Log.d("MainActivity","version is "+version);
+
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     private void parseXMLWithPull(String xmlData) {
