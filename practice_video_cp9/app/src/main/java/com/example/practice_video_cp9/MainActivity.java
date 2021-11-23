@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -92,12 +94,22 @@ public class MainActivity extends AppCompatActivity {
                         .build();
                     Response response = client.newCall(request).execute();
                     String responseData=response.body().string();
-                    parseJsonWithJsonObject(responseData);
+                    parseJsonWithGson(responseData);
                 }catch (Exception e){
                     e.printStackTrace();
                 }
             }
         }).start();
+    }
+
+    private void parseJsonWithGson(String jsonData) {
+        Gson gson = new Gson();
+        List<App> appList=gson.fromJson(jsonData,new TypeToken<List<App>>(){}.getType());
+        for(App app:appList){
+            Log.d("MainActivity","id is "+app.getId());
+            Log.d("MainActivity","name is "+app.getName());
+            Log.d("MainActivity","version is "+app.getVersion());
+        }
     }
 
     private void parseJsonWithJsonObject(String jsonData) {
