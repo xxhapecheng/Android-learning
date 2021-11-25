@@ -24,9 +24,9 @@ public class LogUtil {
         }
     }
 
-    public static void i(String tag,String msg){
-        if(level<=INFO){
-            Log.i(tag,msg);
+    public static void i(String tag,String msg) {
+        if (level <= INFO) {
+            Log.i(tag, msg);
         }
     }
 
@@ -41,7 +41,5 @@ public class LogUtil {
             Log.e(tag,msg);
         }
     }
-
-
 
 }

@@ -1,6 +1,7 @@
 package com.example.practice_learningmore_cp13;
 
 import android.content.Intent;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -16,6 +17,10 @@ public class MainActivity extends AppCompatActivity {
         p.setName("xxhape");
         p.setAge(21);
         intent.putExtra("personData",p);
-        startActivity(intent);
+        //startActivity(intent);
+        TextView textView=(TextView) findViewById(R.id.asdadsa);
+        textView.setOnClickListener((v)->
+                textView.setText("sda")
+                );
     }
 }
