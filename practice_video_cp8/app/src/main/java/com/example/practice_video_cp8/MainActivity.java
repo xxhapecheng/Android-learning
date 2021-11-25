@@ -2,6 +2,11 @@ package com.example.practice_video_cp8;
 
 import android.Manifest.permission;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Environment;
 import android.view.View;
@@ -28,14 +33,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         play.setOnClickListener(this);
         replay.setOnClickListener(this);
         pause.setOnClickListener(this);
+
         if(ContextCompat.checkSelfPermission(MainActivity.this,
                 permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(MainActivity.this,new String[]{permission.WRITE_EXTERNAL_STORAGE},1);
         }else{
             initVideoPlayer();
         }
-    }
 
+    }
+    public static Bitmap drawableToBitmap (Drawable drawable) {
+
+        if (drawable instanceof BitmapDrawable) {
+            return ((BitmapDrawable)drawable).getBitmap();
+        }
+
+        Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+        drawable.draw(canvas);
+
+        return bitmap;
+    }
     private void initVideoPlayer() {
         try {
             File file=new File(Environment.getExternalStorageDirectory(),"movie.mp4");

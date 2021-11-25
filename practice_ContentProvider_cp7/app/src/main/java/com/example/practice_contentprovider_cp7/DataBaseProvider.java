@@ -113,6 +113,7 @@ public class DataBaseProvider extends ContentProvider {
             case BOOK_ITEM:
                 String bookID=uri.getPathSegments().get(1);
                 cursor=db.query("book",projection,"id=?",new String[]{bookID},null,null,sortOrder);
+                break;
             case CATEGORY_DIR:
                 cursor=db.query("category",projection,selection,selectionArgs,null,null,sortOrder);
                 break;

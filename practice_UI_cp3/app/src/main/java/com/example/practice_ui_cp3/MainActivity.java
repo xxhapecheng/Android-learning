@@ -37,8 +37,7 @@ public class MainActivity extends AppCompatActivity {
         msgRecyclerView.setLayoutManager(layoutManager);
         adapter=new MsgAdapter(msgList);
         msgRecyclerView.setAdapter(adapter);
-        Intent intent=new Intent();
-        startActivityForResult(intent,1);
+
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
